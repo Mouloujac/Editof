@@ -3,7 +3,12 @@
 /node_modules
 /.pnp
 .pnp.js
+<<<<<<< HEAD
 ../react-front
+=======
+/react-front/node_modules
+/server/node_modules
+>>>>>>> 3d2180932667559387e53189ddabc8ca80a20ffe
 # testing
 /coverage
 
