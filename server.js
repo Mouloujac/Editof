@@ -22,7 +22,11 @@ app.post("/applySepia", async (req, res) => {
 
     // Apply Sepia effect using Sharp
     const modifiedImageData = await sharp(buffer)
-      .tint('#704214') // Apply a brownish tint for sepia effect
+    .recomb([
+      [0.393, 0.769, 0.189],
+      [0.349, 0.686, 0.168],
+      [0.272, 0.534, 0.131],
+     ]) // Apply a brownish tint for sepia effect
       .toBuffer();
 
     // Save the modified image to a file (optional)
@@ -51,7 +55,7 @@ app.post("/applyBlackAndWhite", async (req, res) => {
       .toBuffer();
 
     // Save the modified image to a file (optional)
-    fs.writeFileSync("modifiedImage.jpg", modifiedImageData);
+    
 
     // Send the modified image data in the response
     res.set("Content-Type", "image/jpeg");
