@@ -1,14 +1,15 @@
-// netlify/functions/applySepia.js
+// netlify-functions/applySepia.js
 
 const sharp = require("sharp");
 
-exports.handler = async (event, req, context) => {
+exports.handler = async (event, context) => {
   try {
-    if (!event.body) {
-      throw new Error("Le corps de la requête est vide."+req.body+event.body);
-    }
-
-    const { imageData, mirrorX, mirrorY } = JSON.parse(event.body);
+    const imageData = event.body.imageData;
+    
+    const mirrorX = event.body.mirrorX;
+    const mirrorY = event.body.mirrorY;
+    console.log("x:"+mirrorX)
+    console.log("y:"+mirrorY)
     // Decode base64 image data
     const buffer = Buffer.from(imageData, "base64");
     
