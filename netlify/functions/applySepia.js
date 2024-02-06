@@ -55,7 +55,10 @@ exports.handler = async (event, context) => {
       statusCode: 200,
       headers: {
         "Content-Type": "image/jpeg",
-        "Content-Disposition": "attachment; filename=modifiedImage.jpg"
+        "Content-Disposition": "attachment; filename=modifiedImage.jpg",
+        "Access-Control-Allow-Origin": "https://editof.site", // Autorise les requêtes depuis ce domaine
+        "Access-Control-Allow-Methods": "POST", // Autorise les requêtes POST
+        "Access-Control-Allow-Headers": "Content-Type", // Autorise les en-têtes Content-Type
       },
       body: modifiedImageData.toString("base64"),
       isBase64Encoded: true
