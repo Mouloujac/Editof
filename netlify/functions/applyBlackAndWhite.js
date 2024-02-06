@@ -2,7 +2,9 @@ const sharp = require("sharp");
 
 exports.handler = async (event, context) => {
     try {
-        const { imageData, mirrorX, mirrorY } = JSON.parse(event.body);
+        const imageData = event.body.imageData;
+        const mirrorX = event.body.mirrorX;
+        const mirrorY = event.body.mirrorY;        
         console.log("x:" + mirrorX);
         console.log("y:" + mirrorY);
         
