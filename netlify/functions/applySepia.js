@@ -4,8 +4,11 @@ const sharp = require("sharp");
 
 exports.handler = async (event, context) => {
   try {
-    const { imageData, mirrorX, mirrorY } = JSON.parse(event.body);
+    if (!event.body) {
+      throw new Error("Le corps de la requête est vide."+event);
+    }
 
+    const { imageData, mirrorX, mirrorY } = JSON.parse(event.body);
     // Decode base64 image data
     const buffer = Buffer.from(imageData, "base64");
     
