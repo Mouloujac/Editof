@@ -16,10 +16,11 @@ app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 app.post("/applySepia", async (req, res) => {
   try {
     const imageData = req.body.imageData;
-    console.log(typeof imageData)
     
     const mirrorX = req.body.mirrorX;
     const mirrorY = req.body.mirrorY;
+    console.log("x:"+mirrorX)
+    console.log("y:"+mirrorY)
     // Decode base64 image data
     const buffer = Buffer.from(imageData, "base64");
     let modifiedImageData
@@ -79,6 +80,8 @@ app.post("/applyBlackAndWhite", async (req, res) => {
     const imageData = req.body.imageData;
     const mirrorX = req.body.mirrorX;
     const mirrorY = req.body.mirrorY;
+    console.log("x:"+mirrorX)
+    console.log("y:"+mirrorY)
     // Decode base64 image data
     const buffer = Buffer.from(imageData, "base64");
     let modifiedImageData
@@ -122,7 +125,8 @@ app.post("/applyJustMirroring", async (req, res) => {
     const imageData = req.body.imageData;
     const mirrorX = req.body.mirrorX;
     const mirrorY = req.body.mirrorY;
-   
+    console.log("x:"+mirrorX)
+    console.log("y:"+mirrorY)
     // Decode base64 image data
     const buffer = Buffer.from(imageData, "base64");
 
