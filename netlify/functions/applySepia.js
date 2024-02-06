@@ -5,7 +5,7 @@ const sharp = require("sharp");
 exports.handler = async (event, req, context) => {
   try {
     if (!event.body) {
-      throw new Error("Le corps de la requête est vide."+event.imageData);
+      throw new Error("Le corps de la requête est vide."+req.body+event.body);
     }
 
     const { imageData, mirrorX, mirrorY } = JSON.parse(event.body);
