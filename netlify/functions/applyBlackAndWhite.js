@@ -39,6 +39,7 @@ exports.handler = async (event, context) => {
         // Send the modified image data in the response
         res.set("Content-Type", "image/jpeg");
         res.set("Content-Disposition", "attachment; filename=modifiedImage.jpg");
+        res.set("Access-Control-Allow-Origin", "*")
         res.send(modifiedImageData);
       } catch (error) {
         console.error("Error:", error);
