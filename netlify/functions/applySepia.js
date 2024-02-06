@@ -2,14 +2,10 @@
 
 const sharp = require("sharp");
 
-exports.handler = async (event, req, context) => {
+exports.handler = async (event, context) => {
   try {
-    const imageData = req.body.imageData;
-    
-    const mirrorX = req.body.mirrorX;
-    const mirrorY = req.body.mirrorY;
-    console.log("x:"+mirrorX)
-    console.log("y:"+mirrorY)
+    const { imageData, mirrorX, mirrorY } = event.body;
+
     // Decode base64 image data
     const buffer = Buffer.from(imageData, "base64");
     
