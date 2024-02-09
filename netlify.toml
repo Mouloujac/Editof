@@ -1,0 +1,6 @@
+# Configuration des headers
+[[headers]]
+  # Header 1 : autorise l'accès à toutes les ressources depuis n'importe quelle origine
+  for = "/*"
+    [headers.values]
+    Access-Control-Allow-Origin = "*"
