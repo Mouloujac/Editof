@@ -41,7 +41,8 @@ exports.handler = async (event, context) => {
             headers: {
                 "Content-Type": "image/jpeg",
                 "Content-Disposition": "attachment; filename=modifiedImage.jpg",
-                "Access-Control-Allow-Origin": "*" // Autoriser l'accès depuis n'importe quelle origine
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Methods": "POST" // Autoriser l'accès depuis n'importe quelle origine
             },
             body: modifiedImageData.toString("base64"),
             isBase64Encoded: true
