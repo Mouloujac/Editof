@@ -4,6 +4,19 @@ exports.handler = async (event, context) => {
     try {
         console.log("Contenu de event.body :", event);
 
+        // Vérifier si la méthode HTTP est OPTIONS
+        if (event.httpMethod === "OPTIONS") {
+            return {
+                statusCode: 200,
+                headers: {
+                    "Access-Control-Allow-Origin": "*", // Autoriser l'accès depuis n'importe quelle origine
+                    "Access-Control-Allow-Methods": "POST",
+                    "Access-Control-Allow-Headers": "Content-Type"
+                },
+                body: JSON.stringify({ message: "OPTIONS request handled" })
+            };
+        }
+
         // Vérifier si la méthode HTTP est POST
         if (event.httpMethod === "POST") {
             // Vérifier si le corps de la requête est vide
@@ -55,26 +68,13 @@ exports.handler = async (event, context) => {
                 body: modifiedImageData.toString("base64"),
                 isBase64Encoded: true
             };
-        }
-
-        // Vérifier si la méthode HTTP est OPTIONS
-        if (event.httpMethod === "OPTIONS") {
+        } else {
+            // Si la méthode HTTP n'est ni OPTIONS ni POST, renvoyer une erreur
             return {
-                statusCode: 200,
-                headers: {
-                    "Access-Control-Allow-Origin": "*", // Autoriser l'accès depuis n'importe quelle origine
-                    "Access-Control-Allow-Methods": "POST",
-                    "Access-Control-Allow-Headers": "Content-Type"
-                },
-                body: JSON.stringify({ message: "OPTIONS request handled" })
+                statusCode: 405, // Méthode non autorisée
+                body: JSON.stringify({ error: "Method Not Allowed" })
             };
         }
-
-        // Si la méthode HTTP n'est ni OPTIONS ni POST, renvoyer une erreur
-        return {
-            statusCode: 405, // Méthode non autorisée
-            body: JSON.stringify({ error: "Method Not Allowed" })
-        };
     } catch (error) {
         console.error("Error:", error);
         return {
