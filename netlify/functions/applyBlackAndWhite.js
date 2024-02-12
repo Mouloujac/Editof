@@ -2,8 +2,8 @@ const sharp = require("sharp");
 
 exports.handler = async (event, context) => {
     try {
-        console.log("Contenu de event :", event);
-        
+        console.log("Contenu de event.body :", event);
+
         // Vérifier si la méthode HTTP est OPTIONS
         if (event.httpMethod === "OPTIONS") {
             return {
@@ -19,8 +19,16 @@ exports.handler = async (event, context) => {
 
         // Vérifier si la méthode HTTP est POST
         if (event.httpMethod === "POST") {
+            // Vérifier si le corps de la requête est vide
+            if (!event.body) {
+                return {
+                    statusCode: 400,
+                    body: JSON.stringify({ error: "Empty request body" })
+                };
+            }
+
             const { imageData, mirrorX, mirrorY } = JSON.parse(event.body);
-            
+
             // Décoder les données d'image base64
             const buffer = Buffer.from(imageData, "base64");
             let modifiedImageData;
@@ -55,7 +63,7 @@ exports.handler = async (event, context) => {
                     "Content-Type": "image/jpeg",
                     "Content-Disposition": "attachment; filename=modifiedImage.jpg",
                     "Access-Control-Allow-Origin": "*", // Autoriser l'accès depuis n'importe quelle origine
-                    "Access-Control-Allow-Methods": "POST" 
+                    "Access-Control-Allow-Methods": "POST"
                 },
                 body: modifiedImageData.toString("base64"),
                 isBase64Encoded: true
