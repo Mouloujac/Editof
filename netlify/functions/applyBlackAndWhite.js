@@ -2,7 +2,7 @@ const sharp = require("sharp");
 
 exports.handler = async (event, context) => {
     try {
-        
+        console.log("Contenu de event.body :", event.body);
         const { imageData, mirrorX, mirrorY } = JSON.parse(event.body);
         console.log("Données reçues :", { imageData, mirrorX, mirrorY });
         // Vérifier si la méthode HTTP est POST
