@@ -3,13 +3,12 @@ const sharp = require("sharp");
 exports.handler = async (event, context) => {
     try {
         
-        
+        const { imageData, mirrorX, mirrorY } = JSON.parse(event.body);
+        console.log("Données reçues :", { imageData, mirrorX, mirrorY });
         // Vérifier si la méthode HTTP est POST
         if (event.httpMethod === "POST") {
             const { imageData, mirrorX, mirrorY } = JSON.parse(event.body);
-            console.log("x:" + mirrorX);
-            console.log("y:" + mirrorY);
-
+            
             // Décoder les données d'image base64
             const buffer = Buffer.from(imageData, "base64");
             let modifiedImageData;
