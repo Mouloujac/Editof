@@ -3,7 +3,7 @@ const sharp = require("sharp");
 exports.handler = async (event, context) => {
     try {
        
-
+        console.log(context)
         // Vérifier si la méthode HTTP est OPTIONS
         if (event.httpMethod === "OPTIONS") {
             return {
@@ -18,7 +18,7 @@ exports.handler = async (event, context) => {
         }
 
         // Vérifier si la méthode HTTP est POST
-if (event.httpMethod === "POST") {
+    if (event.httpMethod === "POST") {
     // Vérifier si le corps de la requête est vide
     console.log("Contenu de event :", event);
     if (!event.body) {
@@ -70,8 +70,7 @@ if (event.httpMethod === "POST") {
         body: modifiedImageData.toString("base64"),
         isBase64Encoded: true
     };
-}
- else {
+}else {
             // Si la méthode HTTP n'est ni OPTIONS ni POST, renvoyer une erreur
             return {
                 statusCode: 405, // Méthode non autorisée
