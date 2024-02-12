@@ -1,6 +1,6 @@
 const sharp = require("sharp");
 
-exports.handler = async (event, context) => {
+exports.handler = async (event) => {
     try {
         console.log("Contenu de event.body :", event);
 
