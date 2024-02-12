@@ -2,17 +2,7 @@ const sharp = require("sharp");
 
 exports.handler = async (event, context) => {
     try {
-        // Vérifier si la méthode HTTP est OPTIONS et renvoyer les en-têtes CORS appropriés
-        if (event.httpMethod === "OPTIONS") {
-            return {
-                statusCode: 200,
-                headers: {
-                    "Access-Control-Allow-Origin": "*",
-                    "Access-Control-Allow-Headers": "Content-Type",
-                    "Access-Control-Allow-Methods": "POST" // Autoriser uniquement la méthode POST
-                }
-            };
-        }
+        
         
         // Vérifier si la méthode HTTP est POST
         if (event.httpMethod === "POST") {
@@ -53,7 +43,8 @@ exports.handler = async (event, context) => {
                 headers: {
                     "Content-Type": "image/jpeg",
                     "Content-Disposition": "attachment; filename=modifiedImage.jpg",
-                    "Access-Control-Allow-Origin": "*" // Autoriser l'accès depuis n'importe quelle origine
+                    "Access-Control-Allow-Origin": "*", // Autoriser l'accès depuis n'importe quelle origine
+                    "Access-Control-Allow-Methods": "POST" 
                 },
                 body: modifiedImageData.toString("base64"),
                 isBase64Encoded: true
