@@ -6,8 +6,19 @@ exports.handler = async (event, context) => {
 
         // Vérifier si la méthode HTTP est OPTIONS
         if (event.httpMethod === "OPTIONS") {
-            
-       
+            return {
+                statusCode: 200,
+                headers: {
+                    "Access-Control-Allow-Origin": "*", // Autoriser l'accès depuis n'importe quelle origine
+                    "Access-Control-Allow-Methods": "POST",
+                    "Access-Control-Allow-Headers": "Content-Type"
+                },
+                body: JSON.stringify({ message: "OPTIONS request handled" })
+            };
+        }
+
+        // Vérifier si la méthode HTTP est POST
+        if (event.httpMethod === "POST") {
             // Vérifier si le corps de la requête est vide
             if (!event.body) {
                 return {
