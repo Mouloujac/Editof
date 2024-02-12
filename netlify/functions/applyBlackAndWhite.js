@@ -30,7 +30,7 @@ function handleGet(event) {
 
 async function handlePost(event) {
   // Vérifier si le corps de la requête est vide
-  console.log("post passé")
+  console.log("post")
   if (!event.body) {
     return {
       statusCode: 400,
