@@ -56,7 +56,6 @@ exports.handler = async (event, context) => {
       headers: {
         "Content-Type": "image/jpeg",
         "Content-Disposition": "attachment; filename=modifiedImage.jpg",
-        "Access-Control-Allow-Origin": "https://editof.site", 
         "Access-Control-Allow-Methods": "POST", 
         "Access-Control-Allow-Headers": "Content-Type", 
       },
