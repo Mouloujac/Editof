@@ -2,9 +2,21 @@ const sharp = require("sharp");
 
 exports.handler = async (event, context) => {
     try {
-        console.log("Contenu de event.body :", event);
-        const { imageData, mirrorX, mirrorY } = JSON.parse(event.body);
-        console.log("Données reçues :", { imageData, mirrorX, mirrorY });
+        console.log("Contenu de event :", event);
+        
+        // Vérifier si la méthode HTTP est OPTIONS
+        if (event.httpMethod === "OPTIONS") {
+            return {
+                statusCode: 200,
+                headers: {
+                    "Access-Control-Allow-Origin": "*", // Autoriser l'accès depuis n'importe quelle origine
+                    "Access-Control-Allow-Methods": "POST",
+                    "Access-Control-Allow-Headers": "Content-Type"
+                },
+                body: JSON.stringify({ message: "OPTIONS request handled" })
+            };
+        }
+
         // Vérifier si la méthode HTTP est POST
         if (event.httpMethod === "POST") {
             const { imageData, mirrorX, mirrorY } = JSON.parse(event.body);
