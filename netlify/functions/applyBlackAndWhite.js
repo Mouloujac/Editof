@@ -16,7 +16,7 @@ exports.handler = async (event) => {
                 body: JSON.stringify({ message: "OPTIONS request handled" })
             };
         }
-
+        console.log('event')
         // Vérifier si la méthode HTTP est POST
         if (event.httpMethod === "POST") {
             // Vérifier si le corps de la requête est vide
