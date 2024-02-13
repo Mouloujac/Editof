@@ -1,7 +1,7 @@
 const sharp = require("sharp");
 
 exports.handler = async (event) => {
-    try {
+    
         
 
         // Vérifier si la méthode HTTP est OPTIONS
@@ -76,11 +76,5 @@ exports.handler = async (event) => {
                 body: JSON.stringify({ error: "Method Not Allowed" })
             };
         }
-    } catch (error) {
-        console.error("Error:", error);
-        return {
-            statusCode: 500,
-            body: JSON.stringify({ success: false, error: "Internal Server Error" })
-        };
-    }
+  
 };
