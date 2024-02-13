@@ -12,7 +12,6 @@ exports.handler = async (event) => {
                     "Access-Control-Allow-Origin": "*", // Autoriser l'accès depuis n'importe quelle origine
                     "Access-Control-Allow-Methods": "POST",
                     "Access-Control-Allow-Headers": "Content-Type",
-                    "Access-Control-Allow-Credentials": "true",
 
                 },
                 body: JSON.stringify({ message: "OPTIONS request handled" })
