@@ -9,7 +9,7 @@ exports.handler = async (event) => {
             return {
                 statusCode: 200,
                 headers: {
-                    "Access-Control-Allow-Origin": "*", // Autoriser l'accès depuis n'importe quelle origine
+                    "Access-Control-Allow-Origin": "https://editof.site", // Autoriser l'accès depuis n'importe quelle origine
                     "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
                     "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, Authorization",
                     "Access-Control-Max-Age": "86400"
@@ -64,7 +64,7 @@ exports.handler = async (event) => {
                 headers: {
                     "Content-Type": "image/jpeg",
                     "Content-Disposition": "attachment; filename=modifiedImage.jpg",
-                    "Access-Control-Allow-Origin": "*", // Autoriser l'accès depuis n'importe quelle origine
+                    "Access-Control-Allow-Origin": "https://editof.site", // Autoriser l'accès depuis n'importe quelle origine
                     "Access-Control-Allow-Methods": "POST"
                 },
                 body: modifiedImageData.toString("base64"),
