@@ -2,7 +2,7 @@ const sharp = require("sharp");
 
 exports.handler = async (event) => {
     try {
-        console.log("Contenu de event.body :", event);
+        
 
         // Vérifier si la méthode HTTP est OPTIONS
         if (event.httpMethod === "OPTIONS") {
@@ -20,6 +20,7 @@ exports.handler = async (event) => {
         // Vérifier si la méthode HTTP est POST
         if (event.httpMethod === "POST") {
             // Vérifier si le corps de la requête est vide
+            console.log('ok')
             if (!event.body) {
                 return {
                     statusCode: 400,
